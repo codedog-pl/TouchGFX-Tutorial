@@ -9,5 +9,10 @@
 **/.vs/
 
 # TouchGFX generated directories
-**/TouchGFX/generated/
+**/generated/
 **/TouchGFX/build/
+
+# Generated build files
+*.d
+*.o
+*.su
