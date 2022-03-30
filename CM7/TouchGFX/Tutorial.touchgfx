@@ -1,0 +1,261 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Initial",
+        "CanvasBufferSize": 12000,
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "sensorOverrideContainer",
+            "X": 472,
+            "Y": 405,
+            "Width": 328,
+            "Height": 75,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "sensorOverrideLabel",
+                "X": 158,
+                "Y": 25,
+                "Width": 159,
+                "Height": 24,
+                "TextId": "__SingleUse_HFBX",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "sensorOverrideToggle",
+                "X": 20,
+                "Y": 18,
+                "Width": 128,
+                "Height": 38,
+                "Pressed": "__designer\\Dark_Togglebars_Toggle_large_button_On.png",
+                "Released": "__designer\\Dark_Togglebars_Toggle_large_button_Off.png",
+                "Style": "Style1"
+              }
+            ]
+          },
+          {
+            "Type": "Gauge",
+            "Name": "gauge1",
+            "X": 275,
+            "Y": 115,
+            "Width": 251,
+            "Height": 251,
+            "FileNameBackground": "__designer\\Dark_Gauges_original_gauge_background_style_01.png",
+            "RotationCenterX": 125,
+            "RotationCenterY": 125,
+            "StartAngle": -90,
+            "EndAngle": 180,
+            "RangeMax": 150,
+            "UseAnimation": true,
+            "Easing": "Linear",
+            "EasingOption": "In",
+            "FileNameNeedle": "__designer\\Dark_Needles_original_gauge_needle_style_01.png",
+            "NeedleRotationCenterX": 11,
+            "NeedleRotationCenterY": 55,
+            "NeedleMovingRenderingAlgorithm": "Bilinear Interpolation",
+            "NeedleSteadyRenderingAlgorithm": "Bilinear Interpolation",
+            "UseArc": true,
+            "FileNameArc": "__designer\\Dark_Gauges_original_gauge_fill_style_01.png",
+            "ArcColor": {
+              "Red": 20,
+              "Green": 151,
+              "Blue": 197
+            },
+            "SetArcPosition": true,
+            "ArcX": 28,
+            "ArcY": 30,
+            "ArcWidth": 196,
+            "ArcHeight": 88,
+            "ArcRadius": 94,
+            "ArcLineWidth": 14,
+            "ArcCapStyle": "Butt"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "startCountdownInteraction",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionWipe",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Countdown"
+            }
+          },
+          {
+            "InteractionName": "HardwareButtonClick",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Boom"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Countdown",
+        "Components": [
+          {
+            "Type": "DigitalClock",
+            "Name": "clock",
+            "X": 48,
+            "Y": 142,
+            "Width": 705,
+            "Height": 196,
+            "TextColor": {
+              "Red": 255
+            },
+            "TextId": "__SingleUse_3MZV",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "InitialSecond": 10
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "goBoomInteraction",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Boom"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Boom",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "nuke",
+            "Width": 800,
+            "Height": 480,
+            "RelativeFilename": "nuke_800x480.png"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "goBlankInteraction",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "wait10seconds"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionBlock",
+              "ActionComponent": "Blank"
+            }
+          },
+          {
+            "InteractionName": "wait10seconds",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerScreenEntered"
+            },
+            "Action": {
+              "Type": "ActionDelay",
+              "Duration": 10000
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Blank",
+        "Components": [],
+        "Interactions": [
+          {
+            "InteractionName": "blankScreenWait",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerScreenEntered"
+            },
+            "Action": {
+              "Type": "ActionDelay",
+              "Duration": 10000
+            }
+          },
+          {
+            "InteractionName": "restart",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "blankScreenWait"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Initial"
+            }
+          }
+        ]
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "Tutorial",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "Initial",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Dark",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      24
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bpp",
+      "24": "LCD24bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD24bpp": {
+        "Id": "LCD24bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../../STM32H747I-DISCO.ioc --platform=m7",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommandOverride": "make -f ../../gcc/Makefile clean && make -f ../../gcc/Makefile -j8",
+    "FlashTargetCommandOverride": "make -f ../../gcc/Makefile flash",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32H7"
+  },
+  "Version": "4.19.0",
+  "CreatedBy": "4.19.0"
+}

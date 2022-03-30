@@ -1,0 +1,13 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options directory
+**/.vs/
+
+# TouchGFX generated directories
+**/TouchGFX/generated/
+**/TouchGFX/build/
