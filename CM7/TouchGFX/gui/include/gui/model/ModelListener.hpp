@@ -16,6 +16,7 @@ public:
     }
 
     virtual void secondTick() { }
+    virtual void testPinStateChanged(bool state) { }
 
 protected:
     Model* model;
