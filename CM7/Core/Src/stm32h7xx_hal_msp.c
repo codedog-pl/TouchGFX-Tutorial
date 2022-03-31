@@ -187,6 +187,7 @@ void HAL_DSI_MspInit(DSI_HandleTypeDef* hdsi)
   /* USER CODE BEGIN DSI_MspInit 0 */
 
   /* USER CODE END DSI_MspInit 0 */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_DSI;
@@ -276,6 +277,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
   /* USER CODE BEGIN LTDC_MspInit 0 */
 
   /* USER CODE END LTDC_MspInit 0 */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
@@ -344,6 +346,7 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef* hqspi)
   /* USER CODE BEGIN QUADSPI_MspInit 0 */
 
   /* USER CODE END QUADSPI_MspInit 0 */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_QSPI;
@@ -740,4 +743,3 @@ void HAL_SDRAM_MspDeInit(SDRAM_HandleTypeDef* hsdram){
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-
