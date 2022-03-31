@@ -8,9 +8,11 @@ InitialView::InitialView()
 void InitialView::setupScreen()
 {
     InitialViewBase::setupScreen();
+    sensorOverride = true;
     sensorOverrideToggle.forceState(sensorOverride);
     sensorOverrideToggle.invalidate();
     gauge1.setValue(coreTemp);
+    presenter->sendMessage({ MSG_SET_LEDS, LEDS_GREEN });
 }
 
 void InitialView::tearDownScreen()
@@ -25,6 +27,10 @@ void InitialView::handleTickEvent()
     if (coreTemp == lastCoreTemp) return;
     gauge1.setValue(coreTemp);
     gauge1.invalidate();
+    if (coreTemp < 20) presenter->sendMessage({ MSG_SET_LEDS, LEDS_BLUE });
+    else if (coreTemp >= 20 && coreTemp < 50) presenter->sendMessage({ MSG_SET_LEDS, LEDS_GREEN });
+    else if (coreTemp >= 50 && coreTemp < 100) presenter->sendMessage({ MSG_SET_LEDS, LEDS_ORANGE });
+    else if (coreTemp > 100) presenter->sendMessage({ MSG_SET_LEDS, LEDS_RED });
     if (coreTemp > 150) {
         application().gotoCountdownScreenWipeTransitionEast();
 

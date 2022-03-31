@@ -57,6 +57,7 @@
 "./Application/User/gui/InitialPresenter.o"
 "./Application/User/gui/InitialView.o"
 "./Application/User/gui/Model.o"
+"./Application/User/gui/ModelListener.o"
 "./Drivers/BSP/Components/ft6x06.o"
 "./Drivers/BSP/Components/ft6x06_reg.o"
 "./Drivers/BSP/Components/is42s32800j.o"

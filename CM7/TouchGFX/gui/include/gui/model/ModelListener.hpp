@@ -17,6 +17,7 @@ public:
 
     virtual void secondTick() { }
     virtual void testPinStateChanged(bool state) { }
+    void sendMessage(UIMessage message);
 
 protected:
     Model* model;
