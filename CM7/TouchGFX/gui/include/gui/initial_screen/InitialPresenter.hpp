@@ -17,15 +17,17 @@ public:
      * The activate function is called automatically when this screen is "switched in"
      * (ie. made active). Initialization logic can be placed here.
      */
-    virtual void activate();
+    void activate();
 
     /**
      * The deactivate function is called automatically when this screen is "switched out"
      * (ie. made inactive). Teardown functionality can be placed here.
      */
-    virtual void deactivate();
+    void deactivate();
 
-    virtual ~InitialPresenter() {};
+    void testPinStateChanged(bool state);
+
+    ~InitialPresenter() {};
 
 private:
     InitialPresenter();
