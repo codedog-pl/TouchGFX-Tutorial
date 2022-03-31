@@ -13,9 +13,12 @@ public:
     void tearDownScreen();
     void handleTickEvent();
     void testPinStateChanged(bool state);
+    void sensorOverrideChanged();
 private:
     uint32_t coreTemp = 20;
     uint32_t lastCoreTemp = 0;
+    bool sensorOverride = true;
+    bool sensorState = true;
     bool coolingEnabled = true;
 };
 

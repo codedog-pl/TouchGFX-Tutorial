@@ -8,7 +8,7 @@ InitialView::InitialView()
 void InitialView::setupScreen()
 {
     InitialViewBase::setupScreen();
-    sensorOverrideToggle.forceState(true);
+    sensorOverrideToggle.forceState(sensorOverride);
     sensorOverrideToggle.invalidate();
     gauge1.setValue(coreTemp);
 }
@@ -20,8 +20,6 @@ void InitialView::tearDownScreen()
 
 void InitialView::handleTickEvent()
 {
-    bool sensorOverride = sensorOverrideToggle.getState();
-	if (sensorOverride) coolingEnabled = sensorOverride;
     if (coolingEnabled && coreTemp > 20) coreTemp--;
     if (!coolingEnabled && coreTemp < 1000) coreTemp++;
     if (coreTemp == lastCoreTemp) return;
@@ -35,5 +33,13 @@ void InitialView::handleTickEvent()
 
 void InitialView::testPinStateChanged(bool state)
 {
-	coolingEnabled = !state;
+    sensorState = state;
+    coolingEnabled = sensorOverride ? true : !state;
+}
+
+void InitialView::sensorOverrideChanged()
+{
+    sensorOverride = sensorOverrideToggle.getState();
+    coolingEnabled = sensorOverride ? true : !sensorState;
+
 }

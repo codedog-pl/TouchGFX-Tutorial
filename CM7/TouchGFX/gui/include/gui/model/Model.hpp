@@ -5,7 +5,7 @@
 #ifndef SIMULATOR
 extern "C" bool BRIDGE_GetTestPinState();
 #else
-bool BRIDGE_GetTestPinState() { return false; }
+bool BRIDGE_GetTestPinState();
 #endif // !SIMULATOR
 /* HAL bridge configuration END */
 
@@ -29,7 +29,7 @@ protected:
 private:
     uint32_t frame = 0;
     uint32_t second = 0;
-    bool lastTestPinState = false;
+    bool lastTestPinState = true;
 };
 
 #endif // MODEL_HPP

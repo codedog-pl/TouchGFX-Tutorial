@@ -19,5 +19,5 @@ void InitialPresenter::deactivate()
 
 void InitialPresenter::testPinStateChanged(bool state)
 {
-	view.testPinStateChanged(state);
+    view.testPinStateChanged(state);
 }
