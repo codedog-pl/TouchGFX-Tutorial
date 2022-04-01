@@ -9,7 +9,7 @@ BoomPresenter::BoomPresenter(BoomView& v)
 
 void BoomPresenter::activate()
 {
-    sendMessage({ MSG_SET_LEDS, LEDS_NONE });
+    sendMessage({ MSG_SET_LEDS, HALBridge::LEDS_NONE });
 }
 
 void BoomPresenter::deactivate()
