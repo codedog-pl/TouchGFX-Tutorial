@@ -1,6 +1,10 @@
 /**
- * HAL access bridge betwen main and TouchGFX code. TouchGFX side.
+ * HAL access bridge between main and TouchGFX code. TouchGFX side.
  */
+
+#ifdef IGNORE // hidden link to main side, not compiled:
+#include <HALBridge.h>
+#endif
 
 #ifndef SIMULATOR
 extern "C"

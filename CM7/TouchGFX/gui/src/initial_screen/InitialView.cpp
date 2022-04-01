@@ -33,7 +33,6 @@ void InitialView::handleTickEvent()
     else if (coreTemp > 100) presenter->sendMessage({ MSG_SET_LEDS, HALBridge::LEDS_RED });
     if (coreTemp > 150) {
         application().gotoCountdownScreenWipeTransitionEast();
-
     }
 }
 

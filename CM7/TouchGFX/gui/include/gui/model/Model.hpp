@@ -5,11 +5,13 @@
 #include <cstdint>
 #include <queue>
 
-enum UIMessageId {
+enum UIMessageId
+{
     MSG_SET_LEDS
 };
 
-struct UIMessage {
+struct UIMessage
+{
     UIMessageId id;
     int parameter;
 };

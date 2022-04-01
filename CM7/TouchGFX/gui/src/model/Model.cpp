@@ -3,12 +3,10 @@
 
 Model::Model() : modelListener(0)
 {
-	lastTestPinState = HALBridge::getTestPinState();
+    lastTestPinState = HALBridge::getTestPinState();
 }
 
-/*
-  Model tick executed on each UI frame, typically @60FPS.
- */
+// Model tick executed on each UI frame, typically @60FPS.
 void Model::tick()
 {
     // message handling:
@@ -18,7 +16,7 @@ void Model::tick()
         switch (m.id)
         {
         case MSG_SET_LEDS:
-        	HALBridge::setLEDs(m.parameter);
+            HALBridge::setLEDs(m.parameter);
             break;
         default:
             break;
